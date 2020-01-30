@@ -1,0 +1,10 @@
+#iframe-text {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+#iframe-header {
+  color: white;
+  font-size: 60px;
+}
