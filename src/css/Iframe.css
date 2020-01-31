@@ -1,0 +1,35 @@
+#iframe-text {
+  position: absolute;
+  top: 40%;
+  left: 22.5%;
+}
+
+#iframe-header {
+  color: white;
+  font-size: 60px;
+}
+
+#iframe-container {
+  position: relative;
+  box-shadow: 10px 20px 40px rgba(92, 38, 134, 0.548);
+}
+
+#iframe-wrapper {
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+#iframe-wrapper iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* 4x3 Aspect Ratio */
+
+#iframe-wrapper-4x3 {
+  padding-top: 75%;
+}
