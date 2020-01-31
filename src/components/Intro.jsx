@@ -1,10 +1,22 @@
 import React from 'react'
+import '../css/Intro.css'
 
 const Intro = () => {
+
+  window.addEventListener("scroll", function() {showFunction()});
+
+  function showFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("intro-para").style.display = "block";
+    } else {
+        document.getElementById("intro-para").style.display = "none";
+    }
+  }
+
   return (
     <>
       <div id='intro-container'>
-        <div id='intro-para'>
+        <div className='intro-para' id='intro-para'>
           <p id='intro-text'>
             Hello! 
             <br />

@@ -10,9 +10,9 @@ const Iframe = () => {
             src="https://fast.wistia.net/embed/iframe/2oe0gksk9d?videoFoam=true" 
             title="Plexus - 27669 Video" 
             allowtransparency="true" 
-            frameborder="0" 
+            frameBorder="0" 
             scrolling="no" 
-            class="wistia_embed" 
+            className="wistia_embed" 
             name="wistia_embed" 
             width="100%" 
             height="1080px">
