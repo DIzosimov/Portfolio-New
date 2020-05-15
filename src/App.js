@@ -38,8 +38,7 @@ const asyncContact = Loadable({
 const App = () => {
 
   AOS.init({
-    duration: 1000,
-    delay: 200
+    duration: 1000
   })
 
   return (
