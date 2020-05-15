@@ -1,11 +1,11 @@
 import React from 'react'
-import '../css/Iframe.css'
+import styles from './styles.module.scss'
 
 const Iframe = () => {
   return (
     <>
-      <div id='iframe-container'>
-        <div id='iframe-wrapper'>
+      <div className={styles.iframeContainer}>
+        <div className={styles.iframeWrapper}>
           <iframe 
             src="https://fast.wistia.net/embed/iframe/2oe0gksk9d?videoFoam=true" 
             title="Plexus - 27669 Video" 
@@ -18,8 +18,8 @@ const Iframe = () => {
             height="1080px">
           </iframe>      
         </div>
-        <div id='iframe-text'>
-          <h1 id='iframe-header'>
+        <div className={styles.iframeText}>
+          <h1 className={styles.iframeHeader}>
             FRONTEND WEB DEVELOPER 
           </h1>
         </div>

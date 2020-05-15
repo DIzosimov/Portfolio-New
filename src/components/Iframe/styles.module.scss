@@ -1,25 +1,25 @@
-#iframe-text {
+.iframeText {
   position: absolute;
   top: 40%;
   left: 22.5%;
 }
 
-#iframe-header {
+.iframeHeader {
   color: white;
   font-size: 60px;
 }
 
-#iframe-container {
+.iframeContainer {
   position: relative;
   box-shadow: 10px 20px 40px rgba(92, 38, 134, 0.548);
 }
 
-#iframe-wrapper {
+.iframeWrapper {
   overflow: hidden;
   padding-top: 56.25%;
 }
 
-#iframe-wrapper iframe {
+.iframeWrapper iframe {
   border: 0;
   height: 100%;
   left: 0;
@@ -29,7 +29,6 @@
 }
 
 /* 4x3 Aspect Ratio */
-
-#iframe-wrapper-4x3 {
+.iframeWrapper-4x3 {
   padding-top: 75%;
 }
