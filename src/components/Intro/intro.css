@@ -34,6 +34,18 @@
 .welcome-left {
   position: relative;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  left: -15%;
+  top: 12%;
+}
+
+.welcome-right {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 77.5%;
+  top: 109%;
 }
 
 .about-container {
@@ -43,7 +55,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 26.5em;
+  top: 24.5em;
   right: 22%;
   align-items: center;
   letter-spacing: 0.8em;
@@ -71,11 +83,11 @@
 
 .projects-container {
   height: 55px;
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: 52.5em;
+  position: absolute;
+  top: 90%;
   right: 0;
   align-items: center;
   letter-spacing: 0.8em;
@@ -108,7 +120,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 17.5em;
+  top: 18.5em;
   left:67%;
   align-items: center;
   letter-spacing: 0.8em;
@@ -140,7 +152,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -9em;
+  top: -5em;
   right: -1em;
   align-items: center;
   letter-spacing: 0.8em;
@@ -166,3 +178,43 @@
   text-decoration: none;
 }
 
+.second-line {
+  margin: 20px 0;
+  align-items: center;
+  display: flex;
+  width: 40%;
+  justify-content: center;
+}
+
+.third-line {
+  align-items: center;
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.fourth-line {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 48%;
+}
+
+.fifth-line {
+  width: 63%;
+  justify-content: center;
+  display: flex;
+}
+
+.second-line-right {
+  margin: 10px 0;
+}
+
+.fourth-line-right {
+  margin: 10px 0;
+}
+
+.fifth-line-right {
+  margin-bottom: 10px;
+}

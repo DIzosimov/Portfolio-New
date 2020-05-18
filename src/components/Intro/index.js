@@ -4,15 +4,19 @@ import { NavLink } from 'react-router-dom'
 import './intro.css'
 import './characters.css'
 
+import { ReactComponent as Circle } from '../../Assets/svgs/circles.svg'
+
 const Intro = () => {
   let string = 'WELCOME TO THE PORTFOLIO OF'
   let splitString = string.split(' ')
+  let nameStr = 'DAVID IZOSIMOV WEB DEVELOPER FROM SWEDEN'
+  let splitNameStr = nameStr.split(' ')
   let prev = 0
 
-  const jacob = e => {
+  const characterSplit = (e, str) => {
     return (
-      splitString[e].split('').map(letter => {
-        if (splitString[e].indexOf(letter) !== prev) {
+      str[e].split('').map(letter => {
+        if (str[e].indexOf(letter) !== prev) {
           prev++
         }
         return <span key={prev} id={`ch${prev}`} data-aos='fade-in' data-aos-delay={prev % 2 === 0 ? `${50+(prev*100)}` : `${50+(prev*50)}`}>{letter}</span>
@@ -25,11 +29,22 @@ const Intro = () => {
       <div id='intro-container'>
         <div className='welcome-container'>
           <div className='welcome-left'>
-            <div className='first-line'>{jacob(0)}</div>
-            <div className='second-line'>{jacob(1)}</div>
-            <div className='third-line'>{jacob(2)}</div>
-            <div className='fourth-line'>{jacob(3)}</div>
-            <div className='fifth-line'>{jacob(4)}</div>
+            <div className='first-line'>{characterSplit(0, splitString)}</div>
+            <div className='second-line'>{characterSplit(1, splitString)}</div>
+            <div className='third-line'>{characterSplit(2, splitString)}</div>
+            <div className='fourth-line'>{characterSplit(3, splitString)}</div>
+            <div className='fifth-line'>{characterSplit(4, splitString)}</div>
+          </div>
+          <div className='welcome-center'>
+            <Circle />
+          </div>
+          <div className='welcome-right'>
+            <div className='first-line-right'>{characterSplit(0, splitNameStr)}</div>
+            <div className='second-line-right'>{characterSplit(1, splitNameStr)}</div>
+            <div className='third-line-right'>{characterSplit(2, splitNameStr)}</div>
+            <div className='fourth-line-right'>{characterSplit(3, splitNameStr)}</div>
+            <div className='fifth-line-right'>{characterSplit(4, splitNameStr)}</div>
+            <div className='sixth-line-right'>{characterSplit(5, splitNameStr)}</div>
           </div>
         </div>
         <div className='about-container'>
