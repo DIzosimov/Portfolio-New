@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { NavLink } from 'react-router-dom'
 import './intro.css'
 import './characters.css'
+import './outro.css'
 
 import { ReactComponent as Circle } from '../../Assets/svgs/circles.svg'
 
@@ -13,6 +14,12 @@ const Intro = () => {
   let splitNameStr = nameStr.split(' ')
   let prev = 0
 
+  useEffect(() => {
+    return () => {
+      outro()
+    }
+  }, [])
+
   const characterSplit = (e, str) => {
     return (
       str[e].split('').map(letter => {
@@ -22,6 +29,10 @@ const Intro = () => {
         return <span key={prev} id={`ch${prev}`} data-aos='fade-in' data-aos-delay={prev % 2 === 0 ? `${50+(prev*100)}` : `${50+(prev*50)}`}>{letter}</span>
       })
     )
+  }
+
+  const outro = () => {
+    return <div className='slideOut' />
   }
 
   return (

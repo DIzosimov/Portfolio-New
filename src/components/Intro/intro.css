@@ -1,16 +1,3 @@
-/*
-.intro-para {
-  animation: fadeEffect 3s; fading effect takes 3s
-  display: flex;
-  flex-direction: column;
-}
-
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-*/
-
 #intro-container {
   display: flex;
   flex-direction: column;
@@ -55,7 +42,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 24.5em;
+  top: 26.5em;
   right: 22%;
   align-items: center;
   letter-spacing: 0.8em;
@@ -83,7 +70,7 @@
 
 .projects-container {
   height: 55px;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -120,7 +107,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 18.5em;
+  top: 22.5em;
   left:67%;
   align-items: center;
   letter-spacing: 0.8em;
@@ -217,4 +204,9 @@
 
 .fifth-line-right {
   margin-bottom: 10px;
+}
+
+svg {
+  width: 200px;
+  height: 200px;
 }

@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Loadable from 'react-loadable'
-import { Route, Router } from 'react-router-dom'
+import { Route, Router, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 
 import LazyLoading from './components/LazyLoading'
+import SwitchWithSlide from './components/SwitchWithSlide'
 
 const history = createBrowserHistory({})
 
@@ -36,20 +37,23 @@ const asyncContact = Loadable({
 })
 
 const App = () => {
+  const [animate] = useState(true)
 
   AOS.init({
     duration: 1000
   })
 
+  const SwitchComponent = animate ? SwitchWithSlide : Switch
+
   return (
     <Router history={history}>
-      <>
+      <SwitchComponent>
         <Route exact path='/' component={asyncLanding} />
         <Route exact path='/cv' component={asyncCv} />
         <Route exact path='/about' component={asyncAbout} />
         <Route exact path='/projects' component={asyncProjects} />
         <Route exact path='/contact' component={asyncContact} />
-      </>
+      </SwitchComponent>
     </Router>
   );
 }
