@@ -23,16 +23,57 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  left: -15%;
-  top: 12%;
+  left: -32%;
+  top: -26%;
+  //media query for smaller iframe
 }
 
 .welcome-right {
   position: absolute;
   display: flex;
   flex-direction: column;
-  left: 77.5%;
-  top: 109%;
+  left: 92%;
+  top: 84%;
+  width: 30%;
+
+  #ch27 {
+    margin-right: 8px;
+  }
+
+  .first-line-right {
+    width: 77%;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .second-line-right {
+    display: flex;
+    width: 50%;
+    margin: 10px 0;
+  }
+  
+  .third-line-right {
+    width: 50%;
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .fourth-line-right {
+    width: 50%;
+    margin: 10px 0;
+    display: flex;
+  }
+  
+  .fifth-line-right {
+    width: 50%;
+    margin-bottom: 10px;
+    display: flex;
+  }
+  
+  .sixth-line-right {
+    width: 50%;
+    display: flex;
+  }
 }
 
 .about-container {
@@ -41,9 +82,9 @@
   transform: rotate(90deg);
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: 26.5em;
-  right: 22%;
+  position: absolute;
+  top: 46.5%;
+  left: -22%;
   align-items: center;
   letter-spacing: 0.8em;
   justify-content: center;
@@ -64,7 +105,7 @@
   -o-transition: all 0.7s ease;
   transition: all 0.7s ease;
   cursor: pointer;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -96,7 +137,7 @@
   -o-transition: all 0.7s ease;
   transition: all 0.7s ease;
   cursor: pointer;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -106,8 +147,8 @@
   transform: rotate(270deg);
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: 22.5em;
+  position: absolute;
+  top: 45%;
   left:67%;
   align-items: center;
   letter-spacing: 0.8em;
@@ -129,7 +170,7 @@
   -o-transition: all 0.7s ease;
   transition: all 0.7s ease;
   cursor: pointer;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -138,8 +179,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: -5em;
+  position: absolute;
+  top: 2%;
   right: -1em;
   align-items: center;
   letter-spacing: 0.8em;
@@ -161,8 +202,16 @@
   -o-transition: all 0.7s ease;
   transition: all 0.7s ease;
   cursor: pointer;
-  color: black;
+  color: white;
   text-decoration: none;
+}
+
+.first-line {
+  margin: 20px 0;
+  align-items: center;
+  display: flex;
+  width: 40%;
+  justify-content: center;
 }
 
 .second-line {
@@ -194,19 +243,42 @@
   display: flex;
 }
 
-.second-line-right {
-  margin: 10px 0;
-}
-
-.fourth-line-right {
-  margin: 10px 0;
-}
-
-.fifth-line-right {
-  margin-bottom: 10px;
-}
-
 svg {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+
+  @media screen and (max-width: 1200px) {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@mixin createNumbered($num, $id) {
+  $foo: '';
+  @for $i from 0 through $num {
+    $foo: $foo + '#' + $id + $i + ', ';
+    #{$foo} {
+      @content;
+    }
+  }
+}
+
+@include createNumbered(35, 'ch') {
+  font-size: 22px;
+  color: white;
+}
+
+@mixin createNumberedSmall($num, $id) {
+  $foo: '';
+  @for $i from 36 through $num {
+    $foo: $foo + '#' + $id + $i + ', ';
+    #{$foo} {
+      @content;
+    }
+  }
+}
+
+@include createNumberedSmall(57, 'ch') {
+  font-size: 18px;
+  color: white;
 }
