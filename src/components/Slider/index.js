@@ -37,7 +37,6 @@ export default class Slider extends React.Component {
   }
 
   startAnimation(position, animationCallback) {
-    debugger
     const noAnimate = position === Slider.CENTER;
     const animatingOut = [Slider.TO_LEFT, Slider.TO_RIGHT, Slider.TO_DOWN, Slider.TO_UP].includes(position);
     const currentlyIn = [

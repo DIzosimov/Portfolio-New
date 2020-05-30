@@ -44,10 +44,8 @@ class SlideOut extends React.Component {
   }
 
   swapChildren = (prevProps, prevState) => {
-    debugger
     const uniqId = this.props.uniqKey || this.props.children.type;
     const prevUniqId = prevProps.uniqKey || prevProps.children.type;
-    // debugger
     let position
     if (uniqId === '/contact') position = Slider.FROM_RIGHT
     if (uniqId === '/about') position = Slider.FROM_LEFT
