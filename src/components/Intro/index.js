@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom'
 import './intro.scss'
 import './outro.css'
 
-import { ReactComponent as Circle } from '../../Assets/svgs/circles.svg'
-
 const Intro = () => {
   let string = 'WELCOME TO THE PORTFOLIO OF'
   let splitString = string.split(' ')
@@ -14,6 +12,8 @@ const Intro = () => {
   let prev = 0
 
   useEffect(() => {
+    neonSign()
+
     return () => {
       outro()
     }
@@ -32,6 +32,26 @@ const Intro = () => {
     )
   }
 
+  const neonSign = () => {
+    const signs = document.querySelectorAll('span')
+
+    const randomIn = (min, max) => (
+      Math.floor(Math.random() * (max - min + 1) + min)
+    )
+
+    const mixupInterval = el => {
+      const ms = randomIn(2000, 4000)
+      el.style.setProperty('--interval', `${ms}ms`)
+    } 
+
+    signs.forEach(el => {
+      mixupInterval(el)
+      el.addEventListener('webkitAnimationIteration', () => {
+        mixupInterval(el)
+      })
+    })
+  }
+
   const outro = () => {
     return <div className='slideOut' />
   }
@@ -47,9 +67,6 @@ const Intro = () => {
             <div className='fourth-line'>{characterSplit(3, splitString)}</div>
             <div className='fifth-line'>{characterSplit(4, splitString)}</div>
           </div>
-          {/* <div className='welcome-center'>
-            <Circle />
-          </div> */}
           <div className='welcome-right'>
             <div className='first-line-right'>{characterSplit(0, splitNameStr, true)}  {characterSplit(1, splitNameStr, true)}</div>
             <div className='third-line-right'>{characterSplit(2, splitNameStr, true)}</div>
@@ -74,8 +91,8 @@ const Intro = () => {
           </NavLink>
         </div>
         <div className='cv-container'>
-          <NavLink to='/cv' className='cv'>
-            <h1 data-aos='fade-down' data-aos-delay='200'>Curriculum Vitae</h1>
+          <NavLink to='/blog' className='cv'>
+            <h1 data-aos='fade-down' data-aos-delay='200'>News Blog</h1>
           </NavLink>
         </div>
       </div>

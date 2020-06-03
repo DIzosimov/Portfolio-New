@@ -16,8 +16,8 @@ const asyncLanding = Loadable({
   loading: LazyLoading
 })
 
-const asyncCv = Loadable({
-  loader: () => import('./components/Cv'),
+const asyncBlog = Loadable({
+  loader: () => import('./components/Blog'),
   loading: LazyLoading
 })
 
@@ -49,7 +49,7 @@ const App = () => {
     <Router history={history}>
       <SwitchComponent>
         <Route exact path='/' component={asyncLanding} />
-        <Route exact path='/cv' component={asyncCv} />
+        <Route exact path='/blog' component={asyncBlog} />
         <Route exact path='/about' component={asyncAbout} />
         <Route exact path='/projects' component={asyncProjects} />
         <Route exact path='/contact' component={asyncContact} />
