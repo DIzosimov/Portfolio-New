@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
+import { ReactComponent as Square } from '../../Assets/svgs/square.svg'
 import styles from './styles.module.scss'
 
 const Contact = () => {
@@ -8,17 +10,47 @@ const Contact = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
+  const [timer, setTimer] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [submited, setSubmited] = useState(false)
 
   const url = process.env[`REACT_APP_API_URL`]
 
-  const resetForm = () => {
-    debugger
-    setMessage('')
-    setName('')
-    setEmail('')
-    setIsLoading(false)
+  let observe
+
+  useEffect(() => {
+    init()
+  }, [])
+
+  if (window.attachEvent) {
+    observe = function(element, event, handler) {
+      element.attachEvent('on'+event, handler)
+    }
+  } else {
+    observe = function(element, event, handler) {
+      element.addEventListener(event,handler, false)
+    }
+  }
+
+  const init = () => {
+    let text = document.getElementsByName('message')[0]
+    const resize = () => {
+      text.style.height = 'auto'
+      text.style.height = text.scrollHeight+'px'
+    }
+    // 0-timeout to get the already changed text
+    const delayedResize = () => {
+      window.setTimeout(resize, 0)
+    }
+    observe(text, 'change', resize)
+    observe(text, 'cut', delayedResize)
+    observe(text, 'paste', delayedResize)
+    observe(text, 'drop', delayedResize)
+    observe(text, 'keydown', delayedResize)
+
+    text.focus()
+    text.select()
+    resize()
   }
 
   const formSubmit = e => {
@@ -34,62 +66,74 @@ const Contact = () => {
     }
 
     axios.post(url, data)
-      .then( res => {
+      .then(res => {
         setSubmited(true)
-        resetForm()
+        setIsLoading(false)
       })
       .catch(() => {
         setIsLoading(false)
         console.log('Message not sent')
       })
   }
-  //add if statement with submited to return email submited page instead of form
+
+  const square = () => {
+   setTimeout(() => {
+    setTimer(true)
+   }, 2000)
+    if (timer) return (
+      <div className={styles.svgContainer}>
+        <Square /> 
+      </div>
+    )
+  }
+  if (!submited) {
   return (
     <div className={styles.container}>
+      {square()}
       <form className={styles.contactForm} onSubmit={e => formSubmit(e)}>
-        <label className={styles.subject} htmlFor='message-subject'>Subject</label>
-        <input 
-          onChange={e => setSubject(e.target.value)}
-          name='subject'
-          className={styles.subjectInput}
-          type='text'
-          placeholder='Subject'
-          value={subject}
-          required={false}
-        />
-
-        <label className={styles.message} htmlFor='message-input'>Your Message</label>
-        <textarea 
-          onChange={e => setMessage(e.target.value)} 
-          name='message' 
-          className={styles.messageInput} 
-          type='text'
-          placeholder='Please write your message here' //add i18n here
-          value={message}
-          required
-        />
-
-        <label className={styles.name} htmlFor='message-name'>Your Name</label>
+        <div className={styles.title}>
+          <h1>Contact Me</h1>
+        </div>
         <input 
           onChange={e => setName(e.target.value)}
           name='name'
           className={styles.nameInput}
           type='text'
-          placeholder='Your name' //add i18n
           value={name}
           required
         />
+        <span className={styles.nameSpan}>Your Name</span>
 
-        <label className={styles.email} htmlFor='message-email'>Your Email</label>
         <input 
           onChange={e => setEmail(e.target.value)}
           name='email'
           className={styles.emailInput}
           type='email'
-          placeholder='Your email' //add i18n
           value={email}
           required
         />
+        <span className={styles.emailSpan}>Your Email</span>
+
+        <input 
+          onChange={e => setSubject(e.target.value)}
+          name='subject'
+          className={styles.subjectInput}
+          type='text'
+          value={subject}
+          required={false}
+        />
+        <span className={styles.subjectSpan}>Subject (optional)</span>
+
+        <textarea 
+          onChange={e => setMessage(e.target.value)} 
+          name='message' 
+          className={styles.messageInput} 
+          type='text'
+          value={message}
+          rows='1'
+          required
+        />
+        <span className={styles.messageSpan}>Message</span>
 
         <div className={styles.buttonContainer}>
           <button type='submit' className={styles.submitButton}>{ isLoading ? 'Loader' : 'submit with translation'}</button>
@@ -97,6 +141,13 @@ const Contact = () => {
       </form>
     </div>
   )
+  } else {
+    return (
+      <div className={styles.submitedContainer}>
+        <p>Submited</p>
+      </div>
+    )
+  }
 }
 
 export default Contact

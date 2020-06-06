@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Wander",
+    "image": "https://branchez-vous.com/wp-content/uploads/2019/10/google-maps-signaler-incidents-860x562.jpg",
+      "description": "A hiking application that lets users create and share hiking trails all around the world!",
+      "link": "https://projectwander.netlify.com/"
+  },
+  {
+    "id": 2,
+    "name": "Classy News",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/41swxzcdkYL._AC_.jpg",
+      "description": "A news application that lets authors publish articles for subscribed users to view.",
+      "link": "https://classynews.netlify.com/"
+  },
+  {
+    "id": 3,
+    "name": "Rock Paper Scissors",
+    "image": "https://www.playworks.org/colorado/wp-content/uploads/sites/5/2019/09/finalrps-classypage.jpg",
+      "description":"A simulated rock paper scissors game against an AI.",
+      "link":"https://davids-rps.netlify.com/"
+  },
+  {
+    "id": 4,
+    "name": "Sweetspot Booking App",
+    "image": "",
+      "description": "A web booking platform that I built for Sweetspot AB",
+      "link": ""
+  }
+]

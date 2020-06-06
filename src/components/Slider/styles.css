@@ -2,6 +2,7 @@
   background: inherit;
   will-change: transform;
   transition: transform 2s ease;
+  overflow: hidden;
 }
 
 .animatable.prepare {
