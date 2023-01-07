@@ -1,0 +1,17 @@
+.cardContainer {
+  display: grid;
+  grid-row: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 25%;
+  width: 25%;
+
+  .cardImage {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

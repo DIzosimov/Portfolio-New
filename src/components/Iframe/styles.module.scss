@@ -20,14 +20,14 @@
   object-fit: cover;
   display: flex;
   justify-content: center;
-  top: 12%;
+  top: 12vh;
   left: 25%;
   align-items: center;
 
   @media screen and (max-width: 1700px) {
-    width: 75%;
-    top: 11%;
-    left: 12%;
+    width: 46vw;
+    top: 11vh;
+    left: 27%;
   }
 }
 

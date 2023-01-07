@@ -1,8 +1,46 @@
+@import "../../index.scss";
+
 .container {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  .contactContainer {
+    height: 55px;
+    width: 50%;
+    transform: rotate(90deg);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 46.5%;
+    left: -22%;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.8em;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    margin: 0;
+    z-index: 999;
+  
+    &:hover {
+      letter-spacing: 5em;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      z-index: 999;
+    }
+  }
 
   .contactForm {
     display: flex;
@@ -13,7 +51,7 @@
     z-index: 999;
     position: absolute;
     top: 16.5vh;
-    left: 21%;
+    left: 18.5%;
 
     @media screen and (max-width: 600px) {
       bottom: 15vh;
@@ -39,14 +77,57 @@
       z-index: 0;
       bottom: 2.4vh;
       right: 13.2vw;
+      animation: none;
+      filter: none;
+      text-shadow: none;
+
+      @media screen and (max-width: 1680px) {
+        right: 15.2vw;
+      }
+
+      @media screen and (max-width: 1440px) {
+        right: 17.5vw;
+      }
+
+      @media screen and (max-width: 1200px) {
+        right: 25vw;
+      }
+    }
+
+    .spanTranslate {
+      transform: translateY(-22px) scale(.8);
     }
 
     .subjectSpan {
-      right: 11.1vw;
+      right: 11.2vw;
+
+      @media screen and (max-width: 1680px) {
+        right: 12.8vw;
+      }
+
+      @media screen and (max-width: 1440px) {
+        right: 14.8vw;
+      }
+
+      @media screen and (max-width: 1200px) {
+        right: 21.2vw;
+      }
     }
 
     .messageSpan {
-      right: 13.6vw;
+      right: 13.8vw;
+
+      @media screen and (max-width: 1680px) {
+        right: 15.8vw;
+      }
+
+      @media screen and (max-width: 1440px) {
+        right: 18.2vw;
+      }
+
+      @media screen and (max-width: 1200px) {
+        right: 26vw;
+      }
     }
 
     .nameInput {
@@ -145,15 +226,20 @@
   }
 
   .svgContainer {
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
     z-index: 0;
     bottom: 10%;
     right: 21%;
+    align-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 2.5%;
+
+    @media screen and (max-width: 1440px) {
+      height: 118vh;
+    }
+
     svg {
       z-index: 0;
       width: 800px;
@@ -183,7 +269,7 @@
     border: none;
     width: 162px;
     height: 51px;
-    border: 2px solid #fff;
+    border: 2px solid white;
     margin: auto;
     margin-top: 60px;
     cursor: pointer;
@@ -192,9 +278,8 @@
     justify-content: center;
     padding: 0;
     background: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: "Montserrat-SemiBold";
+    color: white;
+    font-family: slkscr;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     position: relative;
@@ -202,6 +287,10 @@
     transition-property: color;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 40px;
+    }
     i {
       margin-left: 10px;
       -webkit-transform: translateZ(0);
@@ -244,5 +333,28 @@
         transform: translateX(4px);
       }
     }
+    .loaderSvg {
+      margin: 0 !important;
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .submitedContainer {
+    position: absolute;
+    z-index: 999;
+    left: 47%;
+    top: 40%;  
+    text-shadow: 
+    0 0 10px var(--color1),
+    0 0 20px var(--color2),
+    0 0 40px var(--color3),
+    0 0 80px var(--color4);
+    --color1: #ff8a00;
+    --color2: #ff3300;
+    --color3: #ff7f50;
+    --color4: #e52e71;
+    font-size: 20px;
+    filter: saturate(70%);
   }
 }

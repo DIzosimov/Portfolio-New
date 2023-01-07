@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 
 import { ReactComponent as Square } from '../../Assets/svgs/square.svg'
+import { ReactComponent as Loader } from '../../Assets/svgs/pacMan.svg' 
 import styles from './styles.module.scss'
 
 const Contact = () => {
@@ -19,7 +21,7 @@ const Contact = () => {
   let observe
 
   useEffect(() => {
-    init()
+    if (!submited) init()
   }, [])
 
   if (window.attachEvent) {
@@ -86,68 +88,85 @@ const Contact = () => {
       </div>
     )
   }
-  if (!submited) {
+
   return (
     <div className={styles.container}>
+      <div className={styles.contactContainer}>
+        <NavLink className={styles.contact} to='/'>
+          <h1>Contact</h1>
+        </NavLink>
+      </div>
       {square()}
-      <form className={styles.contactForm} onSubmit={e => formSubmit(e)}>
-        <div className={styles.title}>
-          <h1>Contact Me</h1>
+      {!submited ? (
+        <form className={styles.contactForm} onSubmit={e => formSubmit(e)}>
+          <div className={styles.title}>
+            <h1>Contact Me</h1>
+          </div>
+          <input 
+            onChange={e => setName(e.target.value)}
+            name='name'
+            className={styles.nameInput}
+            type='text'
+            value={name}
+            required
+          />
+          <span className={name.length > 0 ? styles.spanTranslate : null}>Your Name</span>
+
+          <input 
+            onChange={e => setEmail(e.target.value)}
+            name='email'
+            className={styles.emailInput}
+            type='email'
+            value={email}
+            required
+          />
+          <span className={email.length > 0 ? styles.spanTranslate : null}>Your Email</span>
+
+          <input 
+            onChange={e => setSubject(e.target.value)}
+            name='subject'
+            className={styles.subjectInput}
+            type='text'
+            value={subject}
+            required={false}
+          />
+          <span 
+            className={subject.length > 0 ? [styles.spanTranslate, styles.subjectSpan].join(' ') : styles.subjectSpan}
+          >
+            Subject (optional)
+          </span>
+
+          <textarea 
+            onChange={e => setMessage(e.target.value)} 
+            name='message' 
+            className={styles.messageInput} 
+            type='text'
+            value={message}
+            rows='1'
+            required
+          />
+          <span 
+            className={message.length > 0 ? [styles.spanTranslate, styles.messageSpan].join(' ') : styles.messageSpan}
+          >
+            Message
+          </span>
+
+          <div className={styles.buttonContainer}>
+            <button 
+              type='submit' 
+              className={styles.submitButton}
+            >
+              { isLoading ? <Loader className={styles.loaderSvg}/> : 'submit with translation'}
+            </button>
+          </div>
+        </form>
+      ) : (
+        <div className={styles.submitedContainer}>
+          <p>Message sent</p>
         </div>
-        <input 
-          onChange={e => setName(e.target.value)}
-          name='name'
-          className={styles.nameInput}
-          type='text'
-          value={name}
-          required
-        />
-        <span className={styles.nameSpan}>Your Name</span>
-
-        <input 
-          onChange={e => setEmail(e.target.value)}
-          name='email'
-          className={styles.emailInput}
-          type='email'
-          value={email}
-          required
-        />
-        <span className={styles.emailSpan}>Your Email</span>
-
-        <input 
-          onChange={e => setSubject(e.target.value)}
-          name='subject'
-          className={styles.subjectInput}
-          type='text'
-          value={subject}
-          required={false}
-        />
-        <span className={styles.subjectSpan}>Subject (optional)</span>
-
-        <textarea 
-          onChange={e => setMessage(e.target.value)} 
-          name='message' 
-          className={styles.messageInput} 
-          type='text'
-          value={message}
-          rows='1'
-          required
-        />
-        <span className={styles.messageSpan}>Message</span>
-
-        <div className={styles.buttonContainer}>
-          <button type='submit' className={styles.submitButton}>{ isLoading ? 'Loader' : 'submit with translation'}</button>
-        </div>
-      </form>
+      )}
     </div>
   )
-  } else {
-    return (
-      <div className={styles.submitedContainer}>
-        <p>Submited</p>
-      </div>
-    )
-  }
 }
 
 export default Contact
